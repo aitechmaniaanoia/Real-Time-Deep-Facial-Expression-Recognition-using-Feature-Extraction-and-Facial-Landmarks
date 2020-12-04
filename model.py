@@ -19,7 +19,6 @@ from keras.regularizers import l2
 from keras import backend as K
 
 class EmotionVGGNet:
-    @staticmethod
     def build(width, height, depth, classes, reg = 0.0005):
         # initialize the model along with the input shape to be
         # "channels last" and the channels dimension itself
@@ -70,7 +69,6 @@ class EmotionVGGNet:
         model.add(Dropout(0.25))
 
         # Block #3*: fourth CONV => ELU => CONV => ELU => POOL
-        # uncomment this block for experiment #5 or later
         model.add(Conv2D(256, (3, 3), padding = "same", kernel_regularizer = l2(reg),
             kernel_initializer = "he_normal"))
         model.add(ELU())

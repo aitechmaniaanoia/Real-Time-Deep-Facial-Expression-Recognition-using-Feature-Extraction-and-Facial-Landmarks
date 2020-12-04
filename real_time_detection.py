@@ -50,7 +50,7 @@ while True:
             roi_gray = gray[y:y+h, x:x+w]
             roi_color = img[y:y+h, x:x+w]
             
-            # TODO: show label iin image
+            # TODO: show label in image
             
         
     cv2.imshow('video',img)
