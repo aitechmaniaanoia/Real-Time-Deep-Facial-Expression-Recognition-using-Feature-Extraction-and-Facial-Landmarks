@@ -8,3 +8,11 @@ python3 dataset.py
 ```
 
 Train: 
+```
+python3 main.py
+```
+
+Real-time detection:
+```
+python3 real_time_detection.py
+```
