@@ -24,12 +24,13 @@ import utils
 model = EmotionVGGNet.build(width = config.SIZE, height = config.SIZE, depth = config.NUM_CHANNEL,
     classes = config.NUM_CLASSES)
 # opt = SGD(lr = 1e-2, momentum = 0.9, nesterov = True)
-opt = Adam(lr = 1e-3)
-model.compile(loss = "categorical_crossentropy", optimizer = opt,
-    metrics=['acc', utils.f1_m, utils.precision_m, utils.recall_m])
+# opt = Adam(lr = 1e-3)
+# model.compile(loss = "categorical_crossentropy", optimizer = opt,
+#     metrics=['acc', utils.f1_m, utils.precision_m, utils.recall_m])
 
 # load model weight
-model = load_model('output/experiment_2/.mdl_wts.hdf5')
+model = load_model('output/experiment_2/.mdl_wts.hdf5')#, 
+                   #custom_objects={'f1_m':utils.f1_m, 'precision_m': utils.precision_m, 'recall_m': utils.recall_m})
 
 # load dataset
 X_test, Y_test = TestDataGenerator(data_path = config.BASE_PATH, 
@@ -43,5 +44,6 @@ pred = model.predict(X_test)
 
 from sklearn.metrics import classification_report, precision_recall_fscore_support
 print(classification_report(np.argmax(Y_test, axis = 1), np.argmax(pred, axis = 1)))
+
 
 
